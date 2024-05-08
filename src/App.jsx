@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
+import findIndexOfTaskInList from './helpers/findIndexOfTaskInList';
 
 // "new" | "in-progress" | "done"
 const initialTasks = [
@@ -33,12 +34,7 @@ function App() {
   const removeTask = (taskToRemove) => {
     setTasks(
       (previousTasks) => {
-        // create list of task titles
-        const taskTitles = previousTasks
-          .map((task) => task.title);
-        // find index of task to delete via title
-        const indexOfTaskToRemove = taskTitles
-          .indexOf(taskToRemove.title);
+        const indexOfTaskToRemove = findIndexOfTaskInList(previousTasks, taskToRemove);
         // if it's not found (-1) return previous state
         if (indexOfTaskToRemove === -1) {
           return previousTasks;
