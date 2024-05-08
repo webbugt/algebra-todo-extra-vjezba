@@ -2,13 +2,16 @@ import PropTypes from 'prop-types';
 
 function Task({ title, status }) {
   return (
-    <p>
-      {title}
+    <div className="task">
+      <span className="title">{title}</span>
       {' '}
-      -
-      {' '}
-      {status}
-    </p>
+      <span className="status">{status}</span>
+      <div className="controls">
+        <button className="complete-button" type="button">C</button>
+        <button className="in-progress-button" type="button">I</button>
+        <button className="delete-button" type="button">X</button>
+      </div>
+    </div>
   );
 }
 
