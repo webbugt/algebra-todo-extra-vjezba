@@ -66,9 +66,21 @@ function App() {
   return (
     <>
       <h1>ToDo App</h1>
+      <h2>In-Progress:</h2>
       <TaskList
-        tasks={tasks}
-        addTask={addTask}
+        tasks={tasks.filter((task) => task.status === 'in-progress')}
+        removeTask={removeTask}
+        changeTask={changeTask}
+      />
+      <h2>Upcoming:</h2>
+      <TaskList
+        tasks={tasks.filter((task) => task.status === 'new')}
+        removeTask={removeTask}
+        changeTask={changeTask}
+      />
+      <h2>Done:</h2>
+      <TaskList
+        tasks={tasks.filter((task) => task.status === 'done')}
         removeTask={removeTask}
         changeTask={changeTask}
       />
