@@ -48,6 +48,21 @@ function App() {
       },
     );
   };
+
+  const changeTask = (newTask) => {
+    setTasks((previousTasks) => {
+      const indexToChange = findIndexOfTaskInList(previousTasks, newTask);
+      // if it's not found (-1) return previous state
+      if (indexToChange === -1) {
+        return previousTasks;
+      }
+      // create new array for mutation
+      const newTaskList = [...previousTasks];
+      newTaskList[indexToChange] = newTask;
+      return newTaskList;
+    });
+  };
+
   return (
     <>
       <h1>ToDo App</h1>
@@ -72,6 +87,17 @@ function App() {
         }}
       >
         Remove Demo Task
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          changeTask({
+            title: 'Demo task',
+            status: 'done',
+          });
+        }}
+      >
+        Complete Demo Task
       </button>
       <TaskList tasks={tasks} />
     </>
