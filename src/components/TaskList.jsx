@@ -1,25 +1,30 @@
-import { useUIDSeed } from "react-uid"
-import PropTypes from 'prop-types'
-import Task from "./Task"
+import { useUIDSeed } from 'react-uid';
+import PropTypes from 'prop-types';
+import Task, { taskPropTypes } from './Task';
 
-
-const TaskList = ({
-    tasks
-}) => {
-    const seed  = useUIDSeed()
-    return <>
-        {tasks.map((task,index)=>{
-            return <Task key={seed(task,index)} title={task.title} status={task.status} />
-        })}
+function TaskList({
+  tasks,
+}) {
+  const seed = useUIDSeed();
+  return (
+    <>
+      {tasks.map(
+        (task, index) => (
+          <Task
+            key={seed(task, index)}
+            title={task.title}
+            status={task.status}
+          />
+        ),
+      )}
     </>
+  );
 }
-
-const taskPropTypes = PropTypes.shape(Task.propTypes)
 
 TaskList.propTypes = {
-    tasks: PropTypes.arrayOf(taskPropTypes).isRequired
-}
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape(taskPropTypes),
+  ).isRequired,
+};
 
-
-
-export default TaskList
+export default TaskList;

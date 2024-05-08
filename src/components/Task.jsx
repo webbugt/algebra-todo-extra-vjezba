@@ -1,13 +1,23 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-
-const Task = ({ title, status }) => {
-    return <p>{title} - {status}</p>
+function Task({ title, status }) {
+  return (
+    <p>
+      {title}
+      {' '}
+      -
+      {' '}
+      {status}
+    </p>
+  );
 }
 
-Task.propTypes = {
-    title: PropTypes.string,
-    status: PropTypes.oneOf(["new","in-progress","done"])
-}
+// eslint-disable-next-line react-refresh/only-export-components
+export const taskPropTypes = {
+  title: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(['new', 'in-progress', 'done']).isRequired,
+};
 
-export default Task
+Task.propTypes = taskPropTypes;
+
+export default Task;
