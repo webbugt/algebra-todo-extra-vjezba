@@ -8,15 +8,13 @@ function TaskList({
   const seed = useUIDSeed();
   return (
     <>
-      {tasks.map(
-        (task, index) => (
-          <Task
-            key={seed(task, index)}
-            title={task.title}
-            status={task.status}
-          />
-        ),
-      )}
+      {tasks.map((task, index) => (
+        <Task
+          key={seed(task, index)}
+          title={task.title}
+          status={task.status}
+        />
+      ))}
     </>
   );
 }
