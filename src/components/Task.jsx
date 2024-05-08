@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
+import styles from './Task.module.css';
 
 function Task({ title, status }) {
   return (
-    <div className="task">
+    <div className={styles.task}>
       <span className="title">{title}</span>
       {' '}
-      <span className="status">{status}</span>
-      <div className="controls">
-        <button className="complete-button" type="button">C</button>
-        <button className="in-progress-button" type="button">I</button>
-        <button className="delete-button" type="button">X</button>
+      <span className={styles.status}>{status}</span>
+      <div className={styles.controls}>
+        <button className={styles.complete} type="button">C</button>
+        <button className={styles['in-progress']} type="button">I</button>
+        <button className={styles.delete} type="button">X</button>
       </div>
     </div>
   );

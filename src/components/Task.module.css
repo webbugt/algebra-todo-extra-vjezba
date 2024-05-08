@@ -1,0 +1,43 @@
+.task {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.task button {
+    padding: 0.3em 0.9em;
+    font-size: 10px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    gap: 3px
+}
+
+.complete {
+    color: lightgreen;
+    background-color: rgba(70,120,70,0.5)
+}
+
+.in-progress {
+    color: yellow;
+    background-color: rgba(120,120,70,0.5)
+}
+
+.delete {
+    color: red;
+    background-color: rgba(120,70,70,0.5)
+}
+
+.status {
+    font-size: 0.6em;
+    letter-spacing: -0.05em;
+    opacity: 0.5;
+    align-self: center;
+}
