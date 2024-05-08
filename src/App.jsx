@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { useUIDSeed } from 'react-uid'
+import TaskList from './components/TaskList'
 
 // "new" | "in-progress" | "done"
 const initialTasks = [
@@ -24,13 +24,10 @@ const initialTasks = [
 
 function App() {
   const [tasks,setTasks] = useState(initialTasks)
-  const seed = useUIDSeed()
   return (
     <>
       <h1>ToDo App</h1>
-      {tasks.map((task,index)=>{
-        return <p key={seed(task,index)} id={seed(task,index)}>{task.title} - {task.status}</p>
-      })}
+      <TaskList tasks={tasks} />
     </>
   )
 }
