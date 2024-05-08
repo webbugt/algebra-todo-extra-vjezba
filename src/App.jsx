@@ -25,9 +25,24 @@ const initialTasks = [
 function App() {
   // eslint-disable-next-line no-unused-vars
   const [tasks, setTasks] = useState(initialTasks);
+
+  const addTask = (newTask) => {
+    setTasks((previousTasks) => [...previousTasks, newTask]);
+  };
   return (
     <>
       <h1>ToDo App</h1>
+      <button
+        type="button"
+        onClick={() => {
+          addTask({
+            title: 'Demo task',
+            status: 'new',
+          });
+        }}
+      >
+        Add demo task
+      </button>
       <TaskList tasks={tasks} />
     </>
   );
