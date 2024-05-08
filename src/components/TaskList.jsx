@@ -14,10 +14,7 @@ const TaskList = ({
     </>
 }
 
-const taskPropTypes = PropTypes.shape({
-    title: PropTypes.string,
-    status: PropTypes.oneOf(["new","in-progress","done"])
-})
+const taskPropTypes = PropTypes.shape(Task.propTypes)
 
 TaskList.propTypes = {
     tasks: PropTypes.arrayOf(taskPropTypes).isRequired
