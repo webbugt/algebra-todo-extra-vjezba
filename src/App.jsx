@@ -66,40 +66,12 @@ function App() {
   return (
     <>
       <h1>ToDo App</h1>
-      <button
-        type="button"
-        onClick={() => {
-          addTask({
-            title: 'Demo task',
-            status: 'new',
-          });
-        }}
-      >
-        Add demo task
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          removeTask({
-            title: 'Demo task',
-            status: 'new',
-          });
-        }}
-      >
-        Remove Demo Task
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          changeTask({
-            title: 'Demo task',
-            status: 'done',
-          });
-        }}
-      >
-        Complete Demo Task
-      </button>
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        addTask={addTask}
+        removeTask={removeTask}
+        changeTask={changeTask}
+      />
     </>
   );
 }
