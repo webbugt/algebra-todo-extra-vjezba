@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
 
+import { useRef } from 'react';
+
 function TaskForm({ onComplete }) {
+  const inputRef = useRef(null);
+
   return (
     <div>
-      <input title="Task input" type="text" />
+      <input id="main-input" ref={inputRef} title="Task input" type="text" />
       <button type="button">Add task</button>
     </div>
   );
