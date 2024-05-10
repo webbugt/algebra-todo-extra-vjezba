@@ -5,10 +5,22 @@ import { useRef } from 'react';
 function TaskForm({ onComplete }) {
   const inputRef = useRef(null);
 
+  const onCompleteHandler = () => {
+    const inputElement = inputRef.current;
+    if (!inputElement) {
+      return;
+    }
+    const inputValue = inputElement.value;
+    if (!inputValue) {
+      return;
+    }
+    onComplete(inputValue);
+  };
+
   return (
     <div>
       <input id="main-input" ref={inputRef} title="Task input" type="text" />
-      <button type="button">Add task</button>
+      <button type="button" onClick={onCompleteHandler}>Add task</button>
     </div>
   );
 }
