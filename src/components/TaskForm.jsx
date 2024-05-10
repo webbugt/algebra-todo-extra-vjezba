@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-
 import { useRef } from 'react';
+import styles from './TaskForm.module.css';
 
 function TaskForm({ onComplete }) {
   const inputRef = useRef(null);
@@ -19,8 +19,8 @@ function TaskForm({ onComplete }) {
   };
 
   return (
-    <div>
-      <input id="main-input" ref={inputRef} title="Task input" type="text" />
+    <div className={styles.container}>
+      <input className={styles.input} id="main-input" ref={inputRef} title="Task input" type="text" />
       <button type="button" onClick={onCompleteHandler}>Add task</button>
     </div>
   );
