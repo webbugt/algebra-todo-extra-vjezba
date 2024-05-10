@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 import findIndexOfTaskInList from './helpers/findIndexOfTaskInList';
+import TaskForm from './components/TaskForm';
 
 // "new" | "in-progress" | "done"
 const initialTasks = [
@@ -63,24 +64,35 @@ function App() {
     });
   };
 
+  const inProgressTasks = tasks.filter((task) => task.status === 'in-progress');
+  const upcomingTasks = tasks.filter((task) => task.status === 'new');
+  const finishedTasks = tasks.filter((task) => task.status === 'done');
+
   return (
     <>
       <h1>ToDo App</h1>
+      <TaskForm onComplete={(newTaskTitle) => {
+        addTask({
+          title: newTaskTitle,
+          status: 'new',
+        });
+      }}
+      />
       <h2>In-Progress:</h2>
       <TaskList
-        tasks={tasks.filter((task) => task.status === 'in-progress')}
+        tasks={inProgressTasks}
         removeTask={removeTask}
         changeTask={changeTask}
       />
       <h2>Upcoming:</h2>
       <TaskList
-        tasks={tasks.filter((task) => task.status === 'new')}
+        tasks={upcomingTasks}
         removeTask={removeTask}
         changeTask={changeTask}
       />
       <h2>Done:</h2>
       <TaskList
-        tasks={tasks.filter((task) => task.status === 'done')}
+        tasks={finishedTasks}
         removeTask={removeTask}
         changeTask={changeTask}
       />
