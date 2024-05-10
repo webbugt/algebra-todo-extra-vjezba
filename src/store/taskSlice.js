@@ -34,14 +34,15 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (previousTasks, action) => {
-      const newTask = action.payload;
+      const newTaskTitle = action.payload;
       const sortedTaskIds = previousTasks
         .map((task) => task.id).sort((a, b) => b - a);
 
       const largestId = sortedTaskIds[0] || 0;
 
       const newTaskWithId = {
-        ...newTask,
+        title: newTaskTitle,
+        status: 'new',
         id: largestId + 1,
       };
 
@@ -75,5 +76,7 @@ export const taskSlice = createSlice({
     },
   },
 });
+
+export const { addTask, removeTask, changeTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

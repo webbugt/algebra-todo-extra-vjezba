@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types';
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './TaskForm.module.css';
+import { addTask } from '../store/taskSlice';
 
-function TaskForm({ onComplete }) {
+function TaskForm() {
   const inputRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const onCompleteHandler = () => {
     const inputElement = inputRef.current;
@@ -14,7 +17,7 @@ function TaskForm({ onComplete }) {
     if (!inputValue) {
       return;
     }
-    onComplete(inputValue);
+    dispatch(addTask(inputValue));
     inputElement.value = '';
   };
 
@@ -25,9 +28,5 @@ function TaskForm({ onComplete }) {
     </div>
   );
 }
-
-TaskForm.propTypes = {
-  onComplete: PropTypes.func.isRequired,
-};
 
 export default TaskForm;
