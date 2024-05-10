@@ -1,8 +1,8 @@
 function findIndexOfTaskInList(taskList, taskToFind) {
   // create list of task titles
-  const taskTitles = taskList.map((task) => task.title);
+  const taskIds = taskList.map((task) => task.id);
   // find index of task to delete via title
-  return taskTitles.indexOf(taskToFind.title);
+  return taskIds.indexOf(taskToFind.id);
 }
 
 export default findIndexOfTaskInList;

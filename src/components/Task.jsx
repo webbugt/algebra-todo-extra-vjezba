@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './Task.module.css';
 
 function Task({
-  title, status, changeTask, removeTask,
+  title, status, changeTask, removeTask, id,
 }) {
   return (
     <div className={styles.task}>
@@ -14,7 +14,7 @@ function Task({
           className={styles.complete}
           type="button"
           onClick={() => {
-            changeTask({ title, status: 'done' });
+            changeTask({ title, status: 'done', id });
           }}
         >
           C
@@ -23,7 +23,7 @@ function Task({
           className={styles['in-progress']}
           type="button"
           onClick={() => {
-            changeTask({ title, status: 'in-progress' });
+            changeTask({ title, status: 'in-progress', id });
           }}
         >
           I
@@ -32,7 +32,7 @@ function Task({
           className={styles.delete}
           type="button"
           onClick={() => {
-            removeTask({ title });
+            removeTask({ title, id });
           }}
         >
           X
@@ -46,6 +46,7 @@ function Task({
 export const taskPropTypes = {
   title: PropTypes.string.isRequired,
   status: PropTypes.oneOf(['new', 'in-progress', 'done']).isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 Task.propTypes = {

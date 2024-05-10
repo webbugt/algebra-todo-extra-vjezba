@@ -15,6 +15,7 @@ function TaskList({
           key={seed(task, index)}
           title={task.title}
           status={task.status}
+          id={task.id}
           removeTask={removeTask}
           changeTask={changeTask}
         />

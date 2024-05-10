@@ -7,18 +7,22 @@ import TaskForm from './components/TaskForm';
 // "new" | "in-progress" | "done"
 const initialTasks = [
   {
+    id: 0,
     title: 'Feed cats',
     status: 'new',
   },
   {
+    id: 1,
     title: 'Clean house',
     status: 'new',
   },
   {
+    id: 2,
     title: 'Create ToDo app',
     status: 'in-progress',
   },
   {
+    id: 3,
     title: 'Eat Lunch',
     status: 'done',
   },
@@ -29,7 +33,19 @@ function App() {
   const [tasks, setTasks] = useState(initialTasks);
 
   const addTask = (newTask) => {
-    setTasks((previousTasks) => [...previousTasks, newTask]);
+    setTasks((previousTasks) => {
+      const sortedTaskIds = previousTasks
+        .map((task) => task.id).sort((a, b) => b - a);
+
+      const largestId = sortedTaskIds[0] || 0;
+
+      const newTaskWithId = {
+        ...newTask,
+        id: largestId + 1,
+      };
+
+      return [...previousTasks, newTaskWithId];
+    });
   };
 
   const removeTask = (taskToRemove) => {
