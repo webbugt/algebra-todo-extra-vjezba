@@ -15,6 +15,7 @@ function TaskForm({ onComplete }) {
       return;
     }
     onComplete(inputValue);
+    inputElement.value = '';
   };
 
   return (
